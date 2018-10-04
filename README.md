@@ -46,16 +46,6 @@ A database of recommended books. If your wheelhouse includes speculative science
     description: 'Returns full resume'
   },
   {
-    method: 'GET',
-    path: '/api/resume/:section',
-    description: 'Returns resume based on section'
-  },
-  {
-    method: 'POST',
-    path: '/api/resume/:section',
-    description: 'Adds experience to resume based on section'
-  },
-  {
     method: 'PUT',
     path: '/api/books/:id',
     description: 'Edits an existing piece book recommendation based on id'
