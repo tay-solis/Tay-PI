@@ -1,94 +1,93 @@
 const db = require('./models');
 
-const resume = {
-  summary: 'I am an artist, full-stack web developer, and teacher who approaches technology through an interdisciplinary lens. I apply thoughtful, creative solutions to my work in web development as well as the big questions of justice and equity, community building, and the ways that technology shapes humanity’s future. ',
-  experience: [{
-      company: 'General Assembly',
-      companyDescription: 'General Assembly’s Web Development Immersive (WDI) is a 12-week long, full time training program dedicated to preparing students to think like engineers and approach problems creatively in order to build the next generation of web applications and digital products.',
-      role: 'Full Stack Development Fellow',
-      roleDescription: 'I received training in full stack development, including robust full stack web applications and RESTful APIs.',
-      accomplishments: [
-        'Code-o-lingo: An educational game that teaches programming syntax for front end languages.',
-        'Hymeptera API: An open source API that collects information about the Order Hymenoptera, which includes ants, bees, and wasps.'
-      ]
-    },
-    {
-      company: 'Hack the Hood',
-      companyDescription: 'Hack the Hood is an award-winning non-profit that introduces low-income youth of color to careers in tech by hiring and training them to build websites for real small businesses in their own communities. During 6-week "Bootcamps," young people gain valuable hands-on experience, build a portfolio, and learn about opportunities in the tech industry, as well as building critical technical, leadership, entrepreneurship, and life skills with mentorship from staff and tech professionals working in the field.',
-      role: 'Tech Fellow',
-      roleDescription: 'Worked with the Lead Instructor and Jr. Instructor to deliver bootcamp curriculum and provide support for a classroom of 23 youth ages 16 - 20 and taught technical skills including use of CMS for website design, HTML, CSS, and Javascript as well as higher level computer science concepts.',
-      accomplishments: [
-        'Complete overhaul of bootcamp and coding class curriculum to keep up to date with industry standards',
-        'Introduction of spotlight lecture series to the class curriculum to provide supplementary content such as personal branding, blockchain, and digital privacy.'
-      ]
-    },
-    {
-      company: 'Hack the Hood',
-      companyDescription: 'Hack the Hood is an award-winning non-profit that introduces low-income youth of color to careers in tech by hiring and training them to build websites for real small businesses in their own communities. During 6-week "Bootcamps," young people gain valuable hands-on experience, build a portfolio, and learn about opportunities in the tech industry, as well as building critical technical, leadership, entrepreneurship, and life skills with mentorship from staff and tech professionals working in the field.',
-      role: 'Web Developer',
-      roleDescription: 'Worked with small business clients on their digital presence and business websites.',
-      accomplishments: [
-        'https://www.christinecueto.com/',
-        'https://www.kasiemobi.com/',
-        'http://www.nzinghazpalace.com/',
-        'http://www.grabembytheheart.com/'
-      ]
-    },
-    {
-      company: 'East Bay Agency for Children',
-      companyDescription: 'Sequoia Healthy Start (SHS) is a program provided by the East Bay Agency for Children (EBAC), in collaboration with community members, parents, teachers and administrators. Together, we have provided educational and family support services at Sequoia Elementary School since 2000. SHS exposes students to a variety of academic and enrichment activities, carried out in a safe and supportive environment. We support and encourage students to use their voice, build their character, and connect with their communities.',
-      role: 'Afterschool Instructor',
-      roleDescription: 'As a 3rd grade instructor, I helped developed new student-led conflict-management solutions and delivered not only curriculum in writing and math, but also programs for socio-emotional learning and community building with a restorative justice and trauma informed care lens. I worked with my students to create leadership roles with the goal of creating a self-sufficient, self-regulating classroom.',
-      accomplishments: ['Developed leadership opportunities with 3rd graders to build a robust community, resulting in a self-sufficient classroom. Students monitored each other\'s behavior and lead activities.']
-    },
-    {
-      company: 'Art and Architecture Library, Stanford University',
-      companyDescription: 'The Visual Resources Center (VRC) provides digital images for teaching and research at Stanford University through the ImageBase platform. The ImageBase, which consists of approximately 200,000 digital images including images licensed from Archivision and Scholars Resource, is accessible to all members of the Stanford community. Our collection strengths include American art, Chinese art, architecture, and photography.',
-      role: 'Curatorial Assistant',
-      roleDescription: 'Maintained and expanded the Art and Architecture Library’s visual resources database both online and in JStor. Prepared images for database by cleaning and sorting visual slides, scanning and documenting images, organizing and correcting the information in the database, and editing images in Photoshop.',
-      accomplishments: ['Automated the digital editing process to more efficiently produce images for the database', 'Processed upwards of 2500 images a day']
-    }
-  ],
-  education: [{
-      insitution: 'Stanford University',
-      datesAttended: 'Sept 2011 - June 2015',
-      credential: 'B.A. Art Practice',
-      notes: 'Matriculated with Interdisciplinary Honors in the Arts from the Stanford Arts Institute, Phi Beta Kappa Honors Society. Chappell-Lougee Scholarship Recipient. Raina-Giese Award for Creative Painting'
-    },
-    {
-      insitution: 'Hack the Hood',
-      datesAttended: '2018',
-      credential: 'Tech Ladder Academy, Tech Bootcamp',
-      notes: '6-week Bootcamps, young people gain valuable hands-on experience, build a portfolio, and learn about opportunities in the tech industry, as well as building critical technical, leadership, entrepreneurship, and life skills with mentorship from staff and tech professionals working in the field.'
-    },
-
-  ],
-  skills: [{
-      category: 'Front End',
-      skills: ['Javascript (ES6)', 'HTML5', 'CSS3', 'AJAX']
-    },
-    {
-      category: 'Server-Side',
-      skills: ['Django', 'MongoDB', 'Express', 'Mongoose', 'Node.js']
-    },
-    {
-      category: 'Back End',
-      skills: ['Python', 'Ruby', 'Java', 'C++']
-    },
-    {
-      category: 'Frameworks & Libraries',
-      skills: ['React', 'jQuery']
-    },
-    {
-      category: 'Design',
-      skills: ['Adobe Creative Suite', 'Sketch']
-    },
-    {
-      category: 'Version Control & Workflow',
-      skills: ['Git', 'Github', 'Trello', 'Agile']
-    },
-  ]
-}
+// const resume = {
+//   experience: [{
+//       company: 'General Assembly',
+//       companyDescription: 'General Assembly’s Web Development Immersive (WDI) is a 12-week long, full time training program dedicated to preparing students to think like engineers and approach problems creatively in order to build the next generation of web applications and digital products.',
+//       role: 'Full Stack Development Fellow',
+//       roleDescription: 'I received training in full stack development, including robust full stack web applications and RESTful APIs.',
+//       accomplishments: [
+//         'Code-o-lingo: An educational game that teaches programming syntax for front end languages.',
+//         'Hymeptera API: An open source API that collects information about the Order Hymenoptera, which includes ants, bees, and wasps.'
+//       ]
+//     },
+//     {
+//       company: 'Hack the Hood',
+//       companyDescription: 'Hack the Hood is an award-winning non-profit that introduces low-income youth of color to careers in tech by hiring and training them to build websites for real small businesses in their own communities. During 6-week "Bootcamps," young people gain valuable hands-on experience, build a portfolio, and learn about opportunities in the tech industry, as well as building critical technical, leadership, entrepreneurship, and life skills with mentorship from staff and tech professionals working in the field.',
+//       role: 'Tech Fellow',
+//       roleDescription: 'Worked with the Lead Instructor and Jr. Instructor to deliver bootcamp curriculum and provide support for a classroom of 23 youth ages 16 - 20 and taught technical skills including use of CMS for website design, HTML, CSS, and Javascript as well as higher level computer science concepts.',
+//       accomplishments: [
+//         'Complete overhaul of bootcamp and coding class curriculum to keep up to date with industry standards',
+//         'Introduction of spotlight lecture series to the class curriculum to provide supplementary content such as personal branding, blockchain, and digital privacy.'
+//       ]
+//     },
+//     {
+//       company: 'Hack the Hood',
+//       companyDescription: 'Hack the Hood is an award-winning non-profit that introduces low-income youth of color to careers in tech by hiring and training them to build websites for real small businesses in their own communities. During 6-week "Bootcamps," young people gain valuable hands-on experience, build a portfolio, and learn about opportunities in the tech industry, as well as building critical technical, leadership, entrepreneurship, and life skills with mentorship from staff and tech professionals working in the field.',
+//       role: 'Web Developer',
+//       roleDescription: 'Worked with small business clients on their digital presence and business websites.',
+//       accomplishments: [
+//         'https://www.christinecueto.com/',
+//         'https://www.kasiemobi.com/',
+//         'http://www.nzinghazpalace.com/',
+//         'http://www.grabembytheheart.com/'
+//       ]
+//     },
+//     {
+//       company: 'East Bay Agency for Children',
+//       companyDescription: 'Sequoia Healthy Start (SHS) is a program provided by the East Bay Agency for Children (EBAC), in collaboration with community members, parents, teachers and administrators. Together, we have provided educational and family support services at Sequoia Elementary School since 2000. SHS exposes students to a variety of academic and enrichment activities, carried out in a safe and supportive environment. We support and encourage students to use their voice, build their character, and connect with their communities.',
+//       role: 'Afterschool Instructor',
+//       roleDescription: 'As a 3rd grade instructor, I helped developed new student-led conflict-management solutions and delivered not only curriculum in writing and math, but also programs for socio-emotional learning and community building with a restorative justice and trauma informed care lens. I worked with my students to create leadership roles with the goal of creating a self-sufficient, self-regulating classroom.',
+//       accomplishments: ['Developed leadership opportunities with 3rd graders to build a robust community, resulting in a self-sufficient classroom. Students monitored each other\'s behavior and lead activities.']
+//     },
+//     {
+//       company: 'Art and Architecture Library, Stanford University',
+//       companyDescription: 'The Visual Resources Center (VRC) provides digital images for teaching and research at Stanford University through the ImageBase platform. The ImageBase, which consists of approximately 200,000 digital images including images licensed from Archivision and Scholars Resource, is accessible to all members of the Stanford community. Our collection strengths include American art, Chinese art, architecture, and photography.',
+//       role: 'Curatorial Assistant',
+//       roleDescription: 'Maintained and expanded the Art and Architecture Library’s visual resources database both online and in JStor. Prepared images for database by cleaning and sorting visual slides, scanning and documenting images, organizing and correcting the information in the database, and editing images in Photoshop.',
+//       accomplishments: ['Automated the digital editing process to more efficiently produce images for the database', 'Processed upwards of 2500 images a day']
+//     }
+//   ],
+//   education: [{
+//       insitution: 'Stanford University',
+//       datesAttended: 'Sept 2011 - June 2015',
+//       credential: 'B.A. Art Practice',
+//       notes: 'Matriculated with Interdisciplinary Honors in the Arts from the Stanford Arts Institute, Phi Beta Kappa Honors Society. Chappell-Lougee Scholarship Recipient. Raina-Giese Award for Creative Painting'
+//     },
+//     {
+//       insitution: 'Hack the Hood',
+//       datesAttended: '2018',
+//       credential: 'Tech Ladder Academy, Tech Bootcamp',
+//       notes: '6-week Bootcamps, young people gain valuable hands-on experience, build a portfolio, and learn about opportunities in the tech industry, as well as building critical technical, leadership, entrepreneurship, and life skills with mentorship from staff and tech professionals working in the field.'
+//     },
+//
+//   ],
+//   skills: [{
+//       category: 'Front End',
+//       skills: ['Javascript (ES6)', 'HTML5', 'CSS3', 'AJAX']
+//     },
+//     {
+//       category: 'Server-Side',
+//       skills: ['Django', 'MongoDB', 'Express', 'Mongoose', 'Node.js']
+//     },
+//     {
+//       category: 'Back End',
+//       skills: ['Python', 'Ruby', 'Java', 'C++']
+//     },
+//     {
+//       category: 'Frameworks & Libraries',
+//       skills: ['React', 'jQuery']
+//     },
+//     {
+//       category: 'Design',
+//       skills: ['Adobe Creative Suite', 'Sketch']
+//     },
+//     {
+//       category: 'Version Control & Workflow',
+//       skills: ['Git', 'Github', 'Trello', 'Agile']
+//     },
+//   ]
+// }
 
 const recommendedBooks = [{
     title: 'The Fifth Season',
@@ -115,13 +114,13 @@ Whether in Namibia or Cambridge, Arizona or Australia, Margonelli turns up astou
     reasonsForRecommendation: ['Surprisingly engrossing', 'Interesting analysis aboout the nature of life', 'Realistic profile of the process of science']
   }
 ]
-db.Resume.deleteMany({}, (err, newResume) => {
-  if (err) throw err;
-  db.Resume.create(resume, (err, savedResume) => {
-    if (err) throw err;
-    console.log('Resume successfully created');
-  });
-});
+// db.Resume.deleteMany({}, (err, newResume) => {
+//   if (err) throw err;
+//   db.Resume.create(resume, (err, savedResume) => {
+//     if (err) throw err;
+//     console.log('Resume successfully created');
+//   });
+// });
 
 db.Book.deleteMany({}, (err, newResume) => {
   if (err) throw err;

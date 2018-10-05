@@ -5,72 +5,65 @@
   <meta charset="utf-8">
   <title>Tay-PI</title>
   <link rel="icon" href="img/logo-white-transparent.png" />
-  <link href="https://fonts.googleapis.com/css?family=Poller+One|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link rel="stylesheet" href="../styles/style.css" type="text/css"/>
+  <link rel="stylesheet" href="../styles/style.css" type="text/css" />
 </head>
 
+<header>
+  <h1>I have Excellent Taste in Books</h1>
+</header>
 <body>
-  <header>
-    <h1>Hi Stranger</h1>
-  </header>
+
 
   <main>
-    <section class="profile">
-      <div class="profilePic"></div>
-      <div class="profileInfo"></div>
+
+    <section class="wheelhouse">
+      <h1>My Wheelhouse</h1>
+      <ul class="wheelhouseItems"></ul>
     </section>
 
-
-
-    <div class="resume">
-      <h2>Resume</h2>
-      <button class="seeMore"><i class="fas fa-caret-down"></i></button>
-      <div class="dropdown">
-        <p class="summary"></p>
-        <ul class="experience"></ul>
-        <ul class="education"></ul>
-        <ul class="skills"></ul>
-      </div>
-
-    </div>
-
     <section class="books">
+
       <div class="bookList">
-        <h2>Read Me</h2>
-        <button class="seeMore"><i class="fas fa-caret-down"></i></button>
-        <div class="dropdown">
-          <ul class="recommendedBooks"></ul>
-        </div>
+      <h1>Read Me</h1>
+        <ul class="recommendedBooks"></ul>
       </div>
 
       <div class="addBookToList">
+        <h1>Know a book in my wheelhouse?</h1>
         <!-- A form that adds a book recommendation -->
-        <h2>Know a book in my wheelhouse?</h2>
-        <button class="seeMore"><i class="fas fa-caret-down"></i></button>
 
-        <div class="dropdown">
-          <form id="addBook">
+
+          <!-- <form id="addBook">
             <input id="addBookTitle" placeholder="Title" name="title" type="text" />
             <input id="addBookAuthor" placeholder="Author" name="author" type="text" />
 
             <textarea id="addBookSummary" placeholder="Book Summary" name="summary"></textarea>
 
-            <fieldset>
-              <legend> Is this book part of a series?</legend>
+
               <div class="yesNo">
+
+                <label for="isPart">Is this book part of a series?</label>
                 <input id="isPartOfSeries" type="checkbox" name="isPart" />
-                <label for="isPart">Yes</label>
+
               </div>
-            </fieldset>
 
             <textarea id="addBookKeywords" placeholder="Book Keywords (Please separate with a comma)" name="keywords"></textarea>
             <textarea id="addBookReasons" placeholder="Reason(s) for Recommendation (Please separate with a comma)" name="reasonsForRecommendation"></textarea>
 
             <input id="submit" type="submit" value="submit"/>
-            </form>
-        </div>
+            </form> -->
 
+
+    </section>
+
+    <section class="profile">
+      <div class="profilePic"></div>
+      <div class="personalInfo">
+        <ul class="profileInfo"></ul>
+        <ul class="socialLinks"></ul>
+      </div>
     </section>
   </main>
 

@@ -17,24 +17,39 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /* Hardcoded Data */
 //Profile Data
 const taySocialMedia = [{
-    platform: 'Instagram',
+    platform: 'instagram',
     link: 'https://www.instagram.com/alt.he.a/'
   }, {
-    platform: 'Twitter',
+    platform: 'twitter',
     link: 'https://twitter.com/octothorpedeep'
   },
   {
-    platform: 'Medium',
+    platform: 'medium',
     link: 'https://medium.com/@tayjsolis'
   },
   {
-    platform: 'Github',
+    platform: 'github',
     link: 'https://github.com/tay-solis'
   }
 
 ]
 const tayProfile = {
   name: 'Tay J Solis',
+  wheelhouse: [
+    'Speculative Fiction',
+    'Fucked Up Utopias',
+    'Angry Genius',
+    'Science Fiction by People of Color',
+    'Tapping Consciousness into some Magical/Digital Mass Consciousness',
+    'Morally Grey Decisions',
+    'Lies and Deception',
+    'Competent Female Protagonist',
+    'Queer Fiction by Queer People',
+    'Antihero Redemption Arc',
+    'Physics-As-Magic',
+    'Natural Sciences',
+    'Big Picture Thinking'
+  ],
   image: 'https://media.giphy.com/media/QKkAQuxXD0IL7OjKkg/giphy.gif',
   email: 'tayjsolis@gmail.com',
   socialMedia: taySocialMedia,
@@ -95,6 +110,7 @@ app.post('/api/books', (req, res) =>{
 //Updates a book
 app.put('/api/books/:id', (req,res) =>{
   let bookId = req.params.id;
+  console.log("editing...")
   let updateBody = req.body;
   db.Book.findOneAndUpdate({_id: bookId}, updateBody, {new: true}, (err, updatedBook) =>{
     if(err) throw err;
