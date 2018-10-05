@@ -1,5 +1,6 @@
 /* Configuration */
 const bodyParser = require('body-parser');
+
 const express = require('express');
 const app = express();
 
@@ -8,6 +9,9 @@ const port = 9001;
 const db = require('./models');
 
 app.use(express.static('public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /* Hardcoded Data */
@@ -31,6 +35,7 @@ const taySocialMedia = [{
 ]
 const tayProfile = {
   name: 'Tay J Solis',
+  image: 'https://media.giphy.com/media/QKkAQuxXD0IL7OjKkg/giphy.gif',
   email: 'tayjsolis@gmail.com',
   socialMedia: taySocialMedia,
   currentCity: 'Oakland, CA',
@@ -77,21 +82,15 @@ app.get('/api/books/:id', (req, res) =>{
 });
 
 //Adds a new book to the book list
-app.post('api/books', (req, res) =>{
+app.post('/api/books', (req, res) =>{
   let newBook = req.body;
-  db.Book.find({title: req.body.title, author: req.body.author}, (err, foundBook) =>{
-    if(err) throw err;
-    if(foundBook == null){
+  console.log(newBook);
       db.Book.create(newBook, (err, savedBook) =>{
         if (err) throw err;
         console.log(`Created ${newBook}`);
         res.json(newBook);
       });
-    } else{
-      console.log('Book already exists.');
-    }
   });
-});
 
 //Updates a book
 app.put('/api/books/:id', (req,res) =>{

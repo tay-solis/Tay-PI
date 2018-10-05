@@ -1,13 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Tay-PI</title>
-  </head>
-  <body>
-    <h1>Get to Know Me</h1>
-    <div>
-      
+
+<head>
+  <meta charset="utf-8">
+  <title>Tay-PI</title>
+  <link rel="icon" href="img/logo-white-transparent.png" />
+  <link href="https://fonts.googleapis.com/css?family=Poller+One|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles/style.css" type="text/css"/>
+</head>
+
+<body>
+  <header>
+    <h1>Hi Stranger</h1>
+  </header>
+
+  <main>
+    <section class="profile">
+      <div class="profilePic"></div>
+      <div class="profileInfo"></div>
+    </section>
+
+
+
+    <div class="resume">
+      <h2>Resume</h2>
+      <button class="seeMore"><i class="fas fa-caret-down"></i></button>
+      <div class="dropdown">
+        <p class="summary"></p>
+        <ul class="experience"></ul>
+        <ul class="education"></ul>
+        <ul class="skills"></ul>
+      </div>
+
     </div>
-  </body>
+
+    <section class="books">
+      <div class="bookList">
+        <h2>Read Me</h2>
+        <button class="seeMore"><i class="fas fa-caret-down"></i></button>
+        <div class="dropdown">
+          <ul class="recommendedBooks"></ul>
+        </div>
+      </div>
+
+      <div class="addBookToList">
+        <!-- A form that adds a book recommendation -->
+        <h2>Know a book in my wheelhouse?</h2>
+        <button class="seeMore"><i class="fas fa-caret-down"></i></button>
+
+        <div class="dropdown">
+          <form id="addBook">
+            <input id="addBookTitle" placeholder="Title" name="title" type="text" />
+            <input id="addBookAuthor" placeholder="Author" name="author" type="text" />
+
+            <textarea id="addBookSummary" placeholder="Book Summary" name="summary"></textarea>
+
+            <fieldset>
+              <legend> Is this book part of a series?</legend>
+              <div class="yesNo">
+                <input id="isPartOfSeries" type="checkbox" name="isPart" />
+                <label for="isPart">Yes</label>
+              </div>
+            </fieldset>
+
+            <textarea id="addBookKeywords" placeholder="Book Keywords (Please separate with a comma)" name="keywords"></textarea>
+            <textarea id="addBookReasons" placeholder="Reason(s) for Recommendation (Please separate with a comma)" name="reasonsForRecommendation"></textarea>
+
+            <input id="submit" type="submit" value="submit"/>
+            </form>
+        </div>
+
+    </section>
+  </main>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="../scripts/app.js"></script>
+</body>
+
 </html>
