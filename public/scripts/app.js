@@ -22,7 +22,7 @@ const render = (book) => {
   for (let j = 0; j < book.reasonsForRecommendation.length; j++) {
     reasonList += `<li>${book.reasonsForRecommendation[j]}</li>`
   }
-  $('.recommendedBooks').append(`
+  return `
     <li class="book" id=${book._id}>
     <div class="bookHeader">
       <div class="bookTitleAndAuthor">
@@ -54,7 +54,36 @@ const render = (book) => {
         </ul>
       </div>
     </li>
-    `)
+    `;
+}
+
+const formatPosting = (formName) => {
+  let yesNoValue = false;
+  //Takes in if yes or no was chosen in form.
+  if ($(`#${formName}PartOfSeries:checked`).val()) yesNoValue = true;
+  //Turns keyword string into array of Keywords
+  let keywords = $(`#${formName}Keywords`).val().split(',');
+  //Turns reasons string into array of resons
+  let reasons = $(`#${formName}Reasons`).val().split(',');
+
+  let title = $(`#${formName}Title`).val();
+  let author = $(`#${formName}Author`).val();
+  if (title == "") title = 'Untitled';
+  if (author == "") author = "Author Unknown";
+
+  let summary = $(`#${formName}Text`).val();
+  if (!summary) summary = "None";
+
+
+  return posting = {
+
+    title: title,
+    author: author,
+    summary: summary,
+    isPartofSeries: yesNoValue,
+    keywords: keywords,
+    reasonsForRecommendation: reasons
+  };
 }
 
 /* Displays All Books */
@@ -64,44 +93,17 @@ $.ajax({
   success: (response) => {
     console.log(response);
     for (let i = 0; i < response.length; i++) {
-      render(response[i]);
+      $('.recommendedBooks').append(render(response[i]));
     }
   }
 });
 
 /* Adds a User Recommendation to the database*/
 $('#addBook').on('submit', (e) => {
+  e.preventDefault();
   let url = '/api/books';
 
-
-
-
-  let yesNoValue = false;
-  //Takes in if yes or no was chosen in form.
-  if ($('#isPartofSeries:checked').val()) yesNoValue = true;
-  //Turns keyword string into array of Keywords
-  let keywords = $('#addBookKeywords').val().split(',');
-  //Turns reasons string into array of resons
-  let reasons = $('#addBookReasons').val().split(',');
-
-  let title = $('#addBookTitle').val();
-  let author = $('#addBookAuthor').val();
-  if (title == "") title = 'Untitled';
-  if (author == "") author = "Author Unknown";
-
-  let summary = $('#addBookSummary').val();
-  if (!summary) summary = "None";
-
-
-  let posting = {
-
-    title: title,
-    author: author,
-    summary: summary,
-    isPartofSeries: yesNoValue,
-    keywords: keywords,
-    reasonsForRecommendation: reasons
-  };
+  let posting = formatPosting('addBook');
 
   let queryString = `/api/books?title=${posting.title}&author=${posting.author}&summary=${posting.summary}isPartofSeries=${posting.isPartofSeries}&keywords=${posting.keywords}&reasonsForRecommendation=${posting.reasonsForRecommendation}`;
   $.ajax({
@@ -110,7 +112,7 @@ $('#addBook').on('submit', (e) => {
     data: posting,
     success: () => {
       console.log('submitted');
-      render(posting);
+      $('.recommendedBooks').append(render(posting));
     },
     error: (err) => {
       console.log(err);
@@ -144,7 +146,7 @@ $.ajax({
     $('.socialLinks').append(`
         <li><a href='mailto:${response.email}'><i class="far fa-envelope"></i></a>
       `);
-    for(let i = 0; i< response.wheelhouse.length; i++){
+    for (let i = 0; i < response.wheelhouse.length; i++) {
       $('.wheelhouseItems').append(`<li>${response.wheelhouse[i]}</li>`)
     }
   },
@@ -163,8 +165,8 @@ $(document).on('click', '.seeMore', function(e) {
 
 /* Edits Book Information On Click*/
 
-$(document).on('click', '.edit', function(e){
-  if(editorOpen == true){
+$(document).on('click', '.edit', function(e) {
+  if (editorOpen == true) {
     return;
   }
   editorOpen = true;
@@ -173,7 +175,7 @@ $(document).on('click', '.edit', function(e){
   let currentDropdown = currentBook.find('.dropdown');
 
   let title = currentBook.find('.title').html();
-  let author =currentBook.find('.author').html();
+  let author = currentBook.find('.author').html();
   let summary = currentBook.find('.summary').html();
   console.log(summary)
 
@@ -183,18 +185,18 @@ $(document).on('click', '.edit', function(e){
 
   let keywords = "";
   let reasons = "";
-  for(let i = 0; i < keywordElms.length; i++){
-    let keyword =($(keywordElms[i]).html());
-    if (i == keywordElms.length - 1){
+  for (let i = 0; i < keywordElms.length; i++) {
+    let keyword = ($(keywordElms[i]).html());
+    if (i == keywordElms.length - 1) {
       keywords += keyword;
     } else {
       keywords += keyword + ', ';
     }
   }
 
-  for(let i = 0; i < reasonElms.length; i++){
-    let reason =($(reasonElms[i]).html());
-    if (i == reasonElms.length - 1){
+  for (let i = 0; i < reasonElms.length; i++) {
+    let reason = ($(reasonElms[i]).html());
+    if (i == reasonElms.length - 1) {
       reasons += reason;
     } else {
       reasons += reason + ', ';
@@ -211,12 +213,12 @@ $(document).on('click', '.edit', function(e){
         <div class="yesNo">
 
           <label for="isPart">Is this book part of a series?</label>
-          <input id="editedPartOfSeries" type="checkbox" name="isPart" />
+          <input id="editorPartOfSeries" type="checkbox" name="isPart" />
 
         </div>
 
       <textarea id="editorKeywords" name="keywords">${keywords}</textarea>
-      <textarea id="editorReason name="reasonsForRecommendation">${reasons}</textarea>
+      <textarea id="editorReasons" name="reasonsForRecommendation">${reasons}</textarea>
 
       <input id="submit" type="submit" value="submit"/>
       </form>
@@ -224,44 +226,40 @@ $(document).on('click', '.edit', function(e){
 
 });
 
-$(document).on('submit', '#editor',  (e) => {
-  e.preventDefault();
+$(document).on('submit', '#editor', (e) => {
+    e.preventDefault();
+  let currentBook = $('#editor').parents('.book');
+  let editedId = currentBook.attr('id');
+  let posting = formatPosting('editor');
 
-  let yesNoValue = false;
-  //Takes in if yes or no was chosen in form.
-  if ($('#editedPartOfSeries:checked').val()) yesNoValue = true;
-  //Turns keyword string into array of Keywords
-  let keywords = $('#editorKeywords').val().split(',');
-  //Turns reasons string into array of resons
-  let reasons = $('#editorReason').val().split(',');
-
-  let title = $('#editorTitle').val();
-  let author = $('#editorAuthor').val();
-  if (title == "") title = 'Untitled';
-  if (author == "") author = "Author Unknown";
-
-  let summary = $('#editorText').val();
-  if (!summary) summary = "None";
-
-
-  let posting = {
-
-    title: title,
-    author: author,
-    summary: summary,
-    isPartofSeries: yesNoValue,
-    keywords: keywords,
-    reasonsForRecommendation: reasons
-  };
-
-  let queryString = `/api/books?${editedId}`;
+  let queryString = `/api/books/${editedId}`;
   $.ajax({
     method: 'PUT',
     url: queryString,
     data: posting,
     success: () => {
-      console.log('submitted');
-      render(posting);
+      $(`#${editedId}`).remove();
+      $('.recommendedBooks').append(render(posting));
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
+});
+
+$(document).on('click', '.delete', (e) => {
+    e.preventDefault();
+  console.log('clicked');
+
+  let deletedId = $(e.target).parents('.book').attr('id');
+  console.log(deletedId);
+
+  let queryString = `/api/books/${deletedId}`;
+  $.ajax({
+    method: 'DELETE',
+    url: queryString,
+    success: () => {
+      $(`#${deletedId}`).remove();
     },
     error: (err) => {
       console.log(err);

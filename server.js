@@ -121,11 +121,12 @@ app.put('/api/books/:id', (req,res) =>{
 
 //Deletes a book
 app.delete('/api/books/:id', (req, res)=>{
+  console.log('deleting...')
   let bookId = req.params.id;
   db.Book.findOneAndDelete({_id: bookId}, (err, deletedBook) =>{
     if(err) throw err;
     console.log(`Deleted ${deletedBook}`)
-    res.son(deletedBook);
+    res.json(deletedBook);
   });
 });
 

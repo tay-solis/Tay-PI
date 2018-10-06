@@ -246,13 +246,16 @@ input[type=submit]:hover{
 input[type=checkbox]{
   display: block;
   width: 10%;
-  font-size: 20em;
   text-align: center;
   margin: 0;
 }
 
 textarea{
   height: 4em;
+}
+
+label{
+  font-size: .75em;
 }
 
 .yesNo{
@@ -266,8 +269,9 @@ textarea{
   margin-top: 8px;
 }
 
-.editor{
-  width: 100%;
+#editor{
+  width:inherit;
+  margin: 0;
 }
 
 #editorText{
