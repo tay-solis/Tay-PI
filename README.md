@@ -16,9 +16,6 @@ This project is a database of information about myself that can be accessed thro
 **Who I Am**
 Some basic personal information will be available through the API. This includes my birthday, contact information, social media links, personal site links, etc.
 
-**Resume**
-My full-length resume, including education, experience, and skills.
-
 **Recommended Books List**
 A database of recommended books. If your wheelhouse includes speculative science fiction written by women and nonbinary folks of color, natural science, biology textbooks, or critical race theory, then boy howdy do I have recs for you.
 
@@ -39,11 +36,6 @@ A database of recommended books. If your wheelhouse includes speculative science
     method: 'GET',
     path: '/api/profile',
     description: 'Returns personal information'
-  },
-  {
-    method: 'GET',
-    path: '/api/resume',
-    description: 'Returns full resume'
   },
   {
     method: 'PUT',

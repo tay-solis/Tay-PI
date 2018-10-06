@@ -2,6 +2,8 @@ console.log('app.js connected');
 
 let editorOpen = false;
 
+history.scrollRestoration = "manual";
+
 
 /*Displays Book (used at initial load and after one has been added to the database)*/
 const render = (book) => {
@@ -100,7 +102,6 @@ $.ajax({
 
 /* Adds a User Recommendation to the database*/
 $('#addBook').on('submit', (e) => {
-  e.preventDefault();
   let url = '/api/books';
 
   let posting = formatPosting('addBook');
@@ -228,17 +229,20 @@ $(document).on('click', '.edit', function(e) {
 
 $(document).on('submit', '#editor', (e) => {
     e.preventDefault();
+    editorOpen = false;
   let currentBook = $('#editor').parents('.book');
   let editedId = currentBook.attr('id');
   let posting = formatPosting('editor');
+  posting._id = editedId;
 
   let queryString = `/api/books/${editedId}`;
+
   $.ajax({
     method: 'PUT',
     url: queryString,
     data: posting,
     success: () => {
-      $(`#${editedId}`).remove();
+      $(`#editor`).parents('.book').remove();
       $('.recommendedBooks').append(render(posting));
     },
     error: (err) => {
