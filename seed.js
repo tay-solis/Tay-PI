@@ -98,7 +98,7 @@ Three terrible things happen in a single day. Essun, a woman living an ordinary 
 
 Now Essun must pursue the wreckage of her family through a deadly, dying land. Without sunlight, clean water, or arable land, and with limited stockpiles of supplies, there will be war all across the Stillness: a battle royale of nations not for power or territory, but simply for the basic resources necessary to get through the long dark night. Essun does not care if the world falls apart around her. She'll break it herself, if she must, to save her daughter.`,
     isPartofSeries: true,
-    keywords: ['science fiction', 'angry genius', 'women of color', 'tragic', 'magic', 'worldbuilding', 'speculative fiction', 'fantasy', 'dystopia', 'post-apocalyptic', 'lgbtq'],
+    keywords: ['science fiction', 'women of color', 'tragic', 'magic', 'worldbuilding', 'speculative fiction', 'fantasy', 'dystopia', 'post-apocalyptic', 'lgbtq'],
     reasonsForRecommendation: ['Incredible prose', 'Interesting magic', 'Intricately interwoven narratives', 'Engrossing']
   },
   {
@@ -130,5 +130,4 @@ db.Book.deleteMany({}, (err, newResume) => {
       console.log(`Saved ${savedBook}`);
     });
   }
-  process.exit();
 });
