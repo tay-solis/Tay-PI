@@ -63,42 +63,6 @@ app.get('/', (req,res) =>{
   res.sendFile('/views/index.html', {root: __dirname});
 });
 
-app.get('/api', (req, res)=>{
-  const apiRoutes = {
-      getApi:{
-        method: 'GET',
-        path: '/api',
-        description: 'Describes all available endpoints'
-      },
-      getProfile:{
-        method: 'GET',
-        path: '/api/profile',
-        description: 'Returns personal information'
-      },
-      getEditBook:{
-        method: 'PUT',
-        path: '/api/books/:id',
-        description: 'Edits an existing book recommendation based on id'
-      },
-      getAllBooks:{
-        method: 'GET',
-        path: '/api/books',
-        description: 'Returns recommended books'
-      },
-      addNewBook:{
-        method: 'POST',
-        path: '/api/books',
-        description: 'Adds book to recommended book list'
-      },
-      deleteBook:{
-        method: 'DELETE',
-        path: '/api/books/:id',
-        description: 'Destroys a recommended book'
-      }
-  }
-  res.json(apiRoutes);
-})
-
 //Returns personal information
 app.get('/api/profile', (req, res) => {
   res.json(tayProfile);

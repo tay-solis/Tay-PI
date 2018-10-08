@@ -30,14 +30,11 @@ header {
   background-color: #000;
   color: #f2fcfc;
   margin: 0;
-  padding: 3em;
-}
-header img{
-  max-width: 250px;
+  padding: 4em;
 }
 
 header h1{
-  font-size: 4em;
+  font-size: 5em;
   line-height: normal;
 }
 
@@ -73,11 +70,6 @@ h1, h2, h3 {
   text-align: center;
   font-family: 'Bree Serif', serif;
   letter-spacing: .05em;
-}
-
-.bookHeader h2{
-  text-align: left;
-  line-height: 1.15em;
 }
 
 
@@ -141,14 +133,12 @@ section {
   align-items: center;
   background: #000;
   color: #f2fcfc;
-  text-align: left;
 padding: 1em;
     width: 100%;
 }
 
 .bookTitleAndAuthor{
   max-width: 75%;
-  text-align: left;
 }
 
 .bookTitle{
@@ -300,8 +290,5 @@ label{
   }
   .profile ul{
     padding: 0;
-  }
-  .bookHeader{
-    text-align: center;
   }
 }
