@@ -58,9 +58,46 @@ const tayProfile = {
   portfolioSiteLink: 'http://manyhandscreative.com/'
 }
 
+const routes =[
+  {
+    method: 'GET',
+    path: '/api',
+    description: 'Describes all available endpoints'
+  },
+  {
+    method: 'GET',
+    path: '/api/profile',
+    description: 'Returns personal information'
+  },
+  {
+    method: 'PUT',
+    path: '/api/books/:id',
+    description: 'Edits an existing piece book recommendation based on id'
+  },
+  {
+    method: 'GET',
+    path: '/api/books',
+    description: 'Returns recommended books'
+  },
+  {
+    method: 'POST',
+    path: '/api/books',
+    description: 'Adds book to recommended book list'
+  },
+  {
+    method: 'DELETE',
+    path: '/api/books/:id',
+    description: 'Destroys a recommended book'
+  }
+];
+
 /* Routes */
 app.get('/', (req,res) =>{
   res.sendFile('/views/index.html', {root: __dirname});
+});
+
+app.get('/api', (req, res) => {
+  res.json(routes);
 });
 
 //Returns personal information

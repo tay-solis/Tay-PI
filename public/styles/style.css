@@ -30,12 +30,17 @@ header {
   background-color: #000;
   color: #f2fcfc;
   margin: 0;
-  padding: 4em;
+  padding: 3em;
 }
 
 header h1{
   font-size: 5em;
   line-height: normal;
+  margin: 0;
+}
+
+img{
+  max-width: 300px;
 }
 
 /* Typography */
